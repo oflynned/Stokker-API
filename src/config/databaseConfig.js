@@ -10,7 +10,7 @@ export function getEnvironment() {
   return environments.includes(reportedEnvironment) ? reportedEnvironment : 'development';
 }
 
-const dbName = () => (isProductionEnvironment() ? 'api_prod' : `api_${getEnvironment()}`);
+const dbName = () => `stokker_api_${getEnvironment()}`;
 
 const mongodbUri = () => (isProductionEnvironment() ? MONGO_URL : `mongodb://localhost:27017/${dbName()}`);
 
