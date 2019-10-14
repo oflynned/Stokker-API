@@ -9,7 +9,7 @@ import environmentConfig from './config/environmentConfig';
 require('dotenv')
   .config();
 
-const app = express();
+let app = express();
 const logger = require('morgan');
 
 app.use(logger('dev'));
@@ -24,7 +24,7 @@ function setPort(port) {
 
 function listen() {
   const port = app.get('port') || environmentConfig.port;
-  app.listen(port, () => {
+  app = app.listen(port, () => {
     console.log(`The server is running and listening at http://localhost:${port}`);
   });
 }
@@ -41,8 +41,8 @@ app.use('/', indexRouter);
 
 apollo(app);
 
-export default {
-  getApp: () => app,
+module.exports = {
+  app,
   setPort,
   listen
 };
