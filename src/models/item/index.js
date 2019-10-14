@@ -1,6 +1,7 @@
 import { Document } from 'marpat';
 
 import schema from './schema';
+import Audit from '../audit';
 
 class Item extends Document {
   constructor() {
@@ -19,6 +20,10 @@ class Item extends Document {
   async createdAt() {
     return this._id.getTimestamp()
       .getTime();
+  }
+
+  async audits() {
+    return Audit.findByItem(this._id);
   }
 }
 
