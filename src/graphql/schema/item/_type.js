@@ -5,6 +5,7 @@ const Item = `
     quantity: Int!
     used: Boolean!
     createdAt: String!
+    audits: [Audit]
   }
 `;
 

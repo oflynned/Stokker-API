@@ -4,6 +4,7 @@ const Audit = `
     user: User!
     item: Item!
     action: String!
+    changes: String
   }
 `;
 

@@ -2,7 +2,7 @@ const User = `
   type User {
     _id: ID!
     name: String!
-    actions: [Audit]
+    audits: [Audit]
   }
 `;
 
