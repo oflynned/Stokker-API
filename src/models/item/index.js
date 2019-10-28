@@ -18,7 +18,8 @@ class Item extends Document {
   }
 
   async createdAt() {
-    return this._id.getTimestamp()
+    return this._id
+      .getTimestamp()
       .getTime();
   }
 
