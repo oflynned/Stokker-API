@@ -13,8 +13,11 @@ class User extends Document {
     return User.findOne({ _id });
   }
 
+  static async findByEmail(email) {
+    return User.findOne({ email });
+  }
+
   async audits() {
-    console.log(this);
     return Audit.findByUser(this._id);
   }
 }
