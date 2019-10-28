@@ -8,6 +8,8 @@ export const isProductionEnvironment = () => environment === 'production';
 
 export const isDevelopmentEnvironment = () => environment === 'development';
 
+export const isTestEnvironment = () => environment === 'test';
+
 const commonConfig = {
   environment,
   port: parseInt(PORT, 10) || FALLBACK_PORT,
