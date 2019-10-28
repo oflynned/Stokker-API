@@ -36,8 +36,10 @@ app.use(cookieParser());
 app.use(cors({ origin: environmentConfig.corsDomain }));
 
 const indexRouter = require('./routes/index');
+const authRouter = require('./routes/auth');
 
 app.use('/', indexRouter);
+app.use('/auth', authRouter);
 
 apollo(app);
 
