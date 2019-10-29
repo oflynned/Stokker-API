@@ -2,7 +2,7 @@ import User from '../user';
 import Item from '../item';
 
 export const actions = [
-  'create', 'update', 'delete'
+  'create', 'read', 'update', 'delete'
 ];
 
 const schema = {
@@ -19,7 +19,9 @@ const schema = {
     choices: actions,
     required: true
   },
-  changes: Object
+  changes: {
+    type: Object
+  }
 };
 
 export default schema;

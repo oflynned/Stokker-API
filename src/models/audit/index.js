@@ -1,6 +1,7 @@
 import { Document } from 'marpat';
 
 import schema from './schema';
+import User from '../user';
 
 class Audit extends Document {
   constructor() {
@@ -18,6 +19,10 @@ class Audit extends Document {
 
   static async findByUser(user) {
     return Audit.find({ user }, {});
+  }
+
+  async user() {
+    return User.findById(this.user);
   }
 }
 
