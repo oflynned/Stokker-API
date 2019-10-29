@@ -13,11 +13,15 @@ class Item extends Document {
     return Item.findOne({ _id });
   }
 
+  static async findUnarchived() {
+    return Item.find({ archived: false }, {});
+  }
+
   static async update(_id, properties) {
     return Item.findOneAndUpdate({ _id }, properties, {});
   }
 
-  async createdAt() {
+  createdAt() {
     return this._id
       .getTimestamp()
       .getTime();

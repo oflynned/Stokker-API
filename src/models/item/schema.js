@@ -10,6 +10,10 @@ const schema = {
   used: {
     type: Boolean,
     default: false
+  },
+  archived: {
+    type: Boolean,
+    default: false
   }
 };
 
