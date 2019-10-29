@@ -3,16 +3,17 @@ import { json as parseJson } from 'body-parser';
 
 import { isDevelopmentEnvironment, isProductionEnvironment } from '../config/environmentConfig';
 import schema from './schema';
-import User from '../models/user';
+import Session from '../models/session';
 
 const enforceActiveSession = async (req, res, next) => {
-  const userId = req.headers['x-user-id'];
-  if (!userId) {
+  const sessionToken = req.headers['x-session-id'];
+  if (!sessionToken) {
     return res.status(401)
-      .json({ error: 'user_not_defined' });
+      .json({ error: 'invalid_session' });
   }
 
-  req.user = await User.findById(userId);
+  const sessions = await Session.findActiveSessionsBySessionId(sessionToken);
+  req.user = sessions[0].user;
   next();
 };
 
