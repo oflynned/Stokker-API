@@ -1,5 +1,4 @@
-import Item from '../../../models/item';
-import Audit from '../../../models/audit';
+import { createItem, deleteItem, updateItem } from '../../../controllers/itemController';
 
 const Mutation = `
   extend type Mutation {
@@ -13,19 +12,11 @@ export const mutationTypes = () => [Mutation];
 
 export const mutationResolvers = {
   Mutation: {
-    createItem: async (_, args) => Item.create(args)
-      .save(),
-    modifyItem: async (_, { _id, ...props }, { user }) => {
-      const item = await Item.update(_id, props);
-      await Audit.create({
-        user,
-        item,
-        action: 'update',
-        changes: props
-      })
-        .save();
-
-      return item;
+    createItem: async (_, args, { user }) => createItem(args, user),
+    modifyItem: async (_, { _id, ...props }, { user }) => updateItem(_id, props, user),
+    deleteItem: async (_, { _id }, { user }) => {
+      console.log('?????');
+      return deleteItem(_id, user);
     }
   }
 };

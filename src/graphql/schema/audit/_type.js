@@ -1,10 +1,12 @@
 const Audit = `
+  scalar JSON
+
   type Audit {
     _id: ID!
     user: User!
     item: Item!
     action: String!
-    changes: String
+    changes: JSON
   }
 `;
 

@@ -4,8 +4,8 @@ const Item = `
     name: String!
     quantity: Int!
     used: Boolean!
-    createdAt: String!
     audits: [Audit]
+    archived: Boolean!
   }
 `;
 
