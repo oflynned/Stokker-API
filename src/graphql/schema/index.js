@@ -15,13 +15,19 @@ const Mutation = `
   }
 `;
 
+const Subscription = `
+  type Subscription {
+    _empty: String
+  }
+`;
+
 let resolvers = {
   Query: {
     status: () => 'ok'
   }
 };
 
-const typeDefs = [Query, Mutation];
+const typeDefs = [Query, Mutation, Subscription];
 
 fs.readdirSync(__dirname)
   .filter(dir => (dir.indexOf('.') < 0))
