@@ -14,9 +14,6 @@ export const mutationResolvers = {
   Mutation: {
     createItem: async (_, args, { user }) => createItem(args, user),
     modifyItem: async (_, { _id, ...props }, { user }) => updateItem(_id, props, user),
-    deleteItem: async (_, { _id }, { user }) => {
-      console.log('?????');
-      return deleteItem(_id, user);
-    }
+    deleteItem: async (_, { _id }, { user }) => deleteItem(_id, user)
   }
 };
